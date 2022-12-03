@@ -1,13 +1,15 @@
 const { addData } = require("../../model/users.quiries");
 
 const postMiddleware = (req, res, next) => {
-  const { name, age } = req.body;
+  const data = { name: req.body.name, age: req.body.age };
 
-  addData({name, age},(isSucceed)=>{
-    req.isSucceed = isSucceed;
-    next();
-  })
-  // console.log(req.body);
+  addData(
+    data,
+    (isSucceed) => {
+      req.isSucceed = isSucceed;
+      next();
+    }
+  );
 };
 
 module.exports = { postMiddleware };

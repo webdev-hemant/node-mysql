@@ -1,16 +1,16 @@
 const pool = require("./db");
 
 const getAllTable = (response, error) => {
-  return pool.query("SELECT * FROM atable", function (err, rows, fields) {
+  pool.query("SELECT * FROM atable", function (err, rows, fields) {
     if (err) return error(err);
     response(rows)
   });
 };
 
-const addData = (data, result) => {
+const addData = (data, response, error) => {
   pool.query("INSERT INTO atable SET ?", data, (err, res) => {
-    if (err) throw err;
-    result(Boolean(data));
+    if (err) return error(err);
+    response(Boolean(data));
   });
 };
 

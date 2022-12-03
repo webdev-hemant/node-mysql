@@ -18,9 +18,11 @@ const getSecret = (req, res) => {
 };
 
 const postSecret = (req, res) => {
-  res.send({ message: {
-    success: req.isSucceed,
-  } });
-}
+  return res.send({
+    message: {
+      success: req.isSucceed,
+    },
+  });
+};
 
 module.exports = { getSecret, postSecret };
