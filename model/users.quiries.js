@@ -15,11 +15,15 @@ const addDataSchema = (data, response, error) => {
 };
 
 const loginSchema = (data, response, error) => {
-  const { name, password } = data;
-  pool.query("select * from atable WHERE name = ?", name, (err, res) => {
-    if (err) return error(err);
-    response(res);
-  });
+  const { name, age } = data;
+  pool.query(
+    "select * from atable WHERE name = ? AND age = ?",
+    [name, age],
+    (err, res) => {
+      if (err) return console.log(err);
+      response(res);
+    }
+  );
 };
 
 module.exports = { getAllTableSchema, addDataSchema, loginSchema };
