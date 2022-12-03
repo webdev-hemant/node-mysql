@@ -1,7 +1,7 @@
 const userQuieries = require("../model/users.quiries");
 
-const getSecret = (req, res) => {
-  userQuieries.getAllTable(
+const getSecretController = (req, res) => {
+  userQuieries.getAllTableSchema(
     (data) => {
       return res.status(200).send({
         message: "success",
@@ -17,7 +17,7 @@ const getSecret = (req, res) => {
   );
 };
 
-const postSecret = (req, res) => {
+const postSecretController = (req, res) => {
   return res.send({
     message: {
       success: req.isSucceed,
@@ -25,4 +25,13 @@ const postSecret = (req, res) => {
   });
 };
 
-module.exports = { getSecret, postSecret };
+const loginController = (req, res) => {
+  userQuieries.loginSchema(req.body, (data) => {
+    return res.send({
+      success: true,
+      data,
+    });
+  });
+};
+
+module.exports = { getSecretController, postSecretController, loginController };
