@@ -2,8 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-const mysql = require("mysql2");
-const adminRouter = require("./controller/adminRoutes");
+const adminRouter = require("./routes/adminRoutes");
 const PORT = process.env.PORT_NUM;
 
 const app = express();
